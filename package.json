@@ -1,0 +1,25 @@
+{
+  "name": "timewarp",
+  "version": "1.0.0",
+  "description": "Formats an HTML time element's contents according to a formatting property",
+  "main": "timewarp.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/markstickley/timewarp.git"
+  },
+  "keywords": [
+    "html",
+    "time",
+    "element",
+    "format"
+  ],
+  "author": "Mark Stickley",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/markstickley/timewarp/issues"
+  },
+  "homepage": "https://github.com/markstickley/timewarp"
+}
