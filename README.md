@@ -34,9 +34,9 @@ If you want to use relative time (to now), just use `'R'`
 Getting Timewarp
 ----------------
 
-NPM:
+You could just download one of the files in the `dist` folder, or if you like to keep track of version numbers etc then...
 
-Bower: 
+Bower: `bower install timewarp`
 
 
 Contributing to Timewarp
