@@ -1,0 +1,29 @@
+{
+  "name": "timewarp",
+  "description": "Formats an HTML time element's contents according to a formatting property",
+  "main": "timewarp.js",
+  "authors": [
+    "Mark Stickley"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "html",
+    "time",
+    "element",
+    "format"
+  ],
+  "homepage": "https://github.com/markstickley/timewarp",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    ".DS_Store",
+    ".gitignore"
+  ],
+  "dependencies": {
+    "moment": "^2.13.0"
+  }
+}
