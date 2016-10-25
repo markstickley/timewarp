@@ -1,6 +1,6 @@
 {
   "name": "timewarp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Formats an HTML time element's contents according to a formatting property",
   "main": "timewarp.js",
   "scripts": {
