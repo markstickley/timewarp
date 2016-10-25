@@ -46,6 +46,27 @@ describe('TimeWarp', function() {
                 expect(tw.hasRun).toBe(true);
             });
 
+            it('should call the instance\'s applyTimeFormat method with the time element as an argument', function() {
+                document.getElementById('timewarp-test').innerHTML += '<time datetime="2013-11-14" data-timewarp-format="dd-mm-yyyy"></time><time datetime="2013-11-14" data-timewarp-format="dd-mm-yyyy"></time>';
+                spyOn(tw, 'applyTimeFormat');
+
+                tw.run();
+
+                expect(tw.applyTimeFormat.calls.count()).toBe(2);
+                expect(tw.applyTimeFormat).toHaveBeenCalledWith(document.getElementsByTagName('time')[0]);
+                expect(tw.applyTimeFormat).toHaveBeenCalledWith(document.getElementsByTagName('time')[1]);
+
+                tw.applyTimeFormat = tw.applyTimeFormat.originalValue;
+            });
+
+            it('should result in the formatted time string being placed correctly in the element', function (){
+                document.getElementById('timewarp-test').innerHTML += '<time datetime="2013-11-14" data-timewarp-format="dd-mm-yyyy"></time>';
+
+                tw.run();
+
+                expect(document.getElementsByTagName('time')[0].innerHTML).toBe('14-11-2013');
+            });
+
         });
 
         describe('#getTimeElements', function() {

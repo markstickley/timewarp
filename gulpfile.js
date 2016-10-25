@@ -4,6 +4,8 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     concat = require('gulp-concat'),
     babel = require('gulp-babel'),
+    // debug = require('gulp-debug'),
+    clone = require('gulp-clone'),
     runSequence = require('run-sequence'),
     merge = require('merge-stream'),
     karma = require('karma'),
@@ -17,6 +19,7 @@ gulp.task('build-scripts', () => {
         .pipe(concat('timewarp.js'));
 
     var minified = transcodedConcat
+        .pipe(clone())
         .pipe(rename('timewarp.min.js'))
         .pipe(uglify());
 

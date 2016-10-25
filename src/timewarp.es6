@@ -21,9 +21,10 @@
      */
     TimeWarp.prototype.run = function() {
         TimeWarp.hasRun = this.hasRun = true;
+        const that = this;
 
         this.getTimeElements().forEach(function(element, index) {
-            element.innerHTML = this.applyTimeFormat
+            that.applyTimeFormat(element);
         });
     };
 

@@ -1,4 +1,6 @@
-((w, d) => {
+'use strict';
+
+(function (w, d) {
 
     "use strict";
 
@@ -6,6 +8,7 @@
      * TimeWarp constructor
      * @constructor
      */
+
     function TimeWarp() {
         this.hasRun = false;
     }
@@ -19,25 +22,25 @@
     /**
      * Runs TimeWarp to parse for <time> elements
      */
-    TimeWarp.prototype.run = function() {
+    TimeWarp.prototype.run = function () {
         TimeWarp.hasRun = this.hasRun = true;
+        var that = this;
 
-        this.getTimeElements().forEach(function(element, index) {
-            element.innerHTML = this.applyTimeFormat
+        this.getTimeElements().forEach(function (element, index) {
+            that.applyTimeFormat(element);
         });
     };
-
 
     /**
      * Gets all the <time> elements in the document
      * @return {HTMLElement[]} An array of <time> elements
      */
-    TimeWarp.prototype.getTimeElements = function() {
+    TimeWarp.prototype.getTimeElements = function () {
         var elements = document.getElementsByTagName('time');
         var elementArray = [];
 
-        Array.prototype.forEach.call(elements, function(element, index) {
-            if(element.dataset && element.dataset.timewarpFormat) {
+        Array.prototype.forEach.call(elements, function (element, index) {
+            if (element.dataset && element.dataset.timewarpFormat) {
                 elementArray.push(element);
             }
         });
@@ -45,20 +48,19 @@
         return elementArray;
     };
 
-
     /**
      * Takes the data-timewarp-format attribute and formats the value of the datetime attribute
      * inserting the result into the body of the time element.
      * @param  {HTMLElement} timeElement A time element
      */
-    TimeWarp.prototype.applyTimeFormat = function(timeElement) {
-        let moment = w.moment;
-        if(moment === undefined) {
+    TimeWarp.prototype.applyTimeFormat = function (timeElement) {
+        var moment = w.moment;
+        if (moment === undefined) {
             console.error('TimeWarp: Moment is not available');
             return;
         }
 
-        if(!timeElement || !(timeElement instanceof HTMLElement)) {
+        if (!timeElement || !(timeElement instanceof HTMLElement)) {
             console.error('TimeWarp: applyTimeFormat requires an HTML time element');
             return;
         }
@@ -67,8 +69,7 @@
         timeElement.innerHTML = formattedTime;
     };
 
-
-    (new TimeWarp()).run();
+    new TimeWarp().run();
 
     /* Export */
     if (typeof exports !== 'undefined') {
@@ -76,9 +77,7 @@
             exports = module.exports = TimeWarp;
         }
         exports.TimeWarp = TimeWarp;
-    }
-    else if(w) {
+    } else if (w) {
         w.TimeWarp = TimeWarp;
     }
-
 })(window, document);
